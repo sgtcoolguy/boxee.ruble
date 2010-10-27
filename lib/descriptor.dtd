@@ -1,0 +1,54 @@
+<!DOCTYPE app [
+
+<!ENTITY AUTHOR "Christopher Williams">
+<!ENTITY EMAIL "chris.a.williams@gmail.com">
+
+<!ELEMENT app (id,name,version,type,description,platform,thumb,media,copyright,email,minversion,url,startWindow,rating?,test-app?)>
+
+<!-- Required.
+Unique identifier for the application. Must be all lower case, alphanumeric and dashes (-). For example: the-wb. Dot characters are not allowed in the application id, unless the application is stored in a 3rd party repository. -->
+<!ELEMENT id (#PCDATA)>
+
+<!-- Required. Short name for the application. For example: The WB -->
+<!ELEMENT name (#PCDATA)>
+
+<!-- Required. Version number for the application. Should be in format MAJOR.MINOR. For example: 1.9. Please note that MINOR versions should be numerically larger in order to properly support upgrading. Therefore, 1.05 > 1.04 BUT 1.5 < 1.49. -->
+<!ELEMENT version (#PCDATA)>
+
+<!-- Required. Application type. Must be either: rss for Boxee Feeds / RSS applications, skin for Boxee Applications or plugin for XBMC plugins -->
+<!ELEMENT type (#PCDATA)>
+
+<!-- Required. Detailed description of the application. -->
+<!ELEMENT description (#PCDATA)>
+
+<!-- Required. Supported platforms that can run this application. Values must be either all for all platforms or one or more (comma delimited, no space) from the following list: win for Microsoft Windows, mac for Apple OSX, atv for AppleTV, linux for Linux. For example: mac,atv for OSX and AppleTV only. -->
+<!ELEMENT platform (#PCDATA)>
+
+<!-- Required. URL for a thumbnail, available on-line. For example: http://mysite.com/myapp.png. The thumbnail size should be 200×200. The background of the thumbnail must be a graay gradient which can be downloaded from here. -->
+<!ELEMENT thumb (#PCDATA)>
+
+<!-- Required. Media type this application plays. Must be either: video, pictures or music. -->
+<!ELEMENT media (#PCDATA)>
+
+<!-- Required. Text with copyright notice. Please note that the license agreement for all applications is GPL since Boxee, which is based on XBMC is GPL. -->
+<!ELEMENT copyright (#PCDATA)>
+
+<!-- Required. Contact e-mail of the application developer. Will not be published publically any where. -->
+<!ELEMENT email (#PCDATA)>
+
+<!-- Required. Minimum Boxee version that can run this application. The minimum number must be 0.9.7 for Boxee Feeds / RSS and 0.9.11 for Boxee Applications. As more features are added to Boxee, you may need to change that. -->
+<!ELEMENT minversion (#PCDATA)>
+
+<!-- Required for applications of type rss. The URL where the RSS resides. For protocol use rss://. For example: rss://www.metacafe.com/rss.xml -->
+<!ELEMENT url (#PCDATA)>
+
+<!-- Currently required only for applications containing adult content. Must be set to adult. Note that minversion required for adding adult content is 0.9.14 -->
+<!ELEMENT rating (#PCDATA)>
+
+<!-- Required for applications of type skin. The id of the first window which will be launched when openning the application. For example 14000. This can also point to a python file in the root application folder, in that case it should be the name of the python file without its extension. For example start for start.py. -->
+<!ELEMENT startWindow (#PCDATA)>
+
+<!-- Used to test local apps in boxee. If this tag is set to true boxee will automatically add it to your 'My Apps' and will prevent the removal of it from within boxee. To remove a test app, delete the folder. -->
+<!ELEMENT test-app (#PCDATA)>
+
+]>

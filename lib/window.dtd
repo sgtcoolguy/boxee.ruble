@@ -1,0 +1,237 @@
+<!DOCTYPE window [
+
+<!ENTITY AUTHOR "Christopher Williams">
+<!ENTITY EMAIL "chris.a.williams@gmail.com">
+
+<!ELEMENT window (defaultcontrol,allowoverlay,controls,onload?,onunload?)>
+
+<!-- Always 'window' when you are defining the window itself. -->
+<!ATTLIST window type CDATA #FIXED "window">
+<!-- The ID number assigned to this specific window. Range from 14000-14099. -->
+<!ATTLIST window id CDATA #REQUIRED>
+
+
+<!-- -->
+<!ELEMENT defaultcontrol (#PCDATA)>
+<!-- true/false -->
+<!ATTLIST defaultcontrol always (true|false) "true">
+
+<!-- -->
+<!ELEMENT allowoverlay (#PCDATA)>
+
+<!-- Event tag to perform action when the window is loaded. -->
+<!ELEMENT onload (#PCDATA)>
+
+<!-- Event tag to perform action when the window is unloaded. -->
+<!ELEMENT onunload (#PCDATA)>
+
+<!--  -->
+<!ELEMENT controls (control*,itemlayout*,focusedlayout?)>
+
+<!--  -->
+<!ELEMENT itemlayout (control+)>
+<!ATTLIST itemlayout height CDATA #REQUIRED>
+<!ATTLIST itemlayout width CDATA #REQUIRED>
+
+<!--  -->
+<!ELEMENT focusedlayout (control+)>
+<!ATTLIST focusedlayout height CDATA #REQUIRED>
+<!ATTLIST focusedlayout width CDATA #REQUIRED>
+
+<!-- TODO There's plenty more children of control, specific to each type. See http://developer.boxee.tv/UI_Controls -->
+<!-- a UI control. Unfortunately the same tag is used for each type and type is an attribute, so we can't break out which children apply to which type -->
+<!ELEMENT control (content?,description?,type,id,posx?,posy?,width?,height?,visible?,animation?,camera?,colordiffuse?,onup?,ondown?,onleft?,onright?,hitrect?,enable?,pulseonselect?,onclick?,onfocus?,texturefocus?,texturenofocus?,label?,font?,textcolor?,focusedcolor?,disabledcolor?,shadowcolor?,angle?,align?,aligny?,textoffsetx?,textoffsety?,texture?)>
+
+<!-- content tags live inside container UI control elements, such as panel, list, fixedlist, wraplist -->
+<!ELEMENT content (item*,onclick?)>
+<!ATTLIST content type (url|directory|action) #REQUIRED>
+<!ATTLIST content url CDATA #IMPLIED>
+
+<!-- items can live inside content tag -->
+<!ELEMENT item (id?,label?,label2?,icon?,thumb?,onclick?)>
+<!ELEMENT label2 (#PCDATA)>
+<!ELEMENT icon (#PCDATA)>
+<!ELEMENT thumb (#PCDATA)>
+
+<!-- Only used to make things clear for the skinner. Not read by Boxee at all. -->
+<!ELEMENT description (#PCDATA)>
+
+<!-- The type of control. -->
+<!ELEMENT type (#PCDATA)>
+<!ATTLIST control type (button|edit|fadelabel|fixedlist|group|grouplist|image|label|largeimage|list|multiimage|panel|progress|radiobutton|scrollbar|selectbutton|slider|textbox|togglebutton|videowindow|visualisation|wraplist) "label">
+
+<!-- Specifies the control's id. The value this takes depends on the control type, and the window that you are using the control on. There are special control id's that must be present in each window. Any other controls that the skinner adds can be any id they like. Any controls that the skinner specifies content needs not have an id unless it's needed for animation purposes. For instance, most image and label controls don't need an id if the skinner specifies they're content. -->
+<!ELEMENT id (#PCDATA)>
+
+<!-- Specifies where the left edge of the control should be drawn, relative to it's parent's left edge. If an "r" is included (eg 180r) then the measurement is taken from the parent's right edge (in the left direction). -->
+<!ELEMENT posx (#PCDATA)>
+
+<!-- Specifies where the top edge of the control should be drawn, relative to it's parent's top edge. If an "r" is included (eg 180r) then the measurement is taken from the parent's bottom edge (in the up direction). -->
+<!ELEMENT posy (#PCDATA)>
+
+<!-- Specifies the width that should be used to draw the control. -->
+<!ELEMENT width (#PCDATA)>
+
+<!-- Specifies the height that should be used to draw the control. -->
+<!ELEMENT height (#PCDATA)>
+
+<!-- Specifies a condition as to when this control will be visible. Can be true, false, or a condition. See here for more information. Defaults to true. -->
+<!ELEMENT visible (#PCDATA)>
+
+<!-- Specifies the animation to be run when the control enters a particular state. See here for more information -->
+<!ELEMENT animation (#PCDATA)>
+
+<!-- Specifies the location (relative to the parent's coordinates) of the camera. Useful for the 3D animations such as rotatey. Format is <camera x="20" y="30" /> -->
+<!ELEMENT camera (#PCDATA)>
+
+<!-- This specifies the color to be used for the texture basis. It's in hex AARRGGBB format. If you define <colordiffuse>FFFF00FF</colordiffuse> (magenta), the image will be given a magenta tint when rendered. Defaults to FFFFFFFF (no tint). You can also specify this as a name from the colour theme. -->
+<!ELEMENT colordiffuse (#PCDATA)>
+
+<!-- Specifies the <id> of the control that should be moved to when the user moves up off this control. Can point to a control group (which remembers previous focused items). -->
+<!ELEMENT onup (#PCDATA)>
+<!ATTLIST onup lang CDATA #FIXED "python">
+
+<!-- Specifies the <id> of the control that should be moved to when the user moves down off this control. Can point to a control group (which remembers previous focused items). -->
+<!ELEMENT ondown (#PCDATA)>
+<!ATTLIST ondown lang CDATA #FIXED "python">
+
+<!-- Specifies the <id> of the control that should be moved to when the user moves left off this control. Can point to a control group (which remembers previous focused items). -->
+<!ELEMENT onleft (#PCDATA)>
+<!ATTLIST onleft lang CDATA #FIXED "python">
+
+<!-- Specifies the <id> of the control that should be moved to when the user moves right off this control. Can point to a control group (which remembers previous focused items). -->
+<!ELEMENT onright (#PCDATA)>
+<!ATTLIST onright lang CDATA #FIXED "python">
+
+<!-- -->
+<!ELEMENT onfocus (#PCDATA)>
+<!ATTLIST onfocus lang CDATA #FIXED "python">
+
+<!-- -->
+<!ELEMENT onclick (#PCDATA)>
+<!ATTLIST onclick lang CDATA #FIXED "python">
+
+<!-- Specifies the location and size of the "focus area" of this control (relative to the parent's coordinates) used by the mouse cursor. Format is <hitrect x="20" y="30" w="50" h="10" /> -->
+<!ELEMENT hitrect (#PCDATA)>
+
+<!-- Specifies a condition as to when this control will be enabled. Can be true, false, or a condition. See here for more information. Defaults to true. -->
+<!ELEMENT enable (#PCDATA)>
+
+<!-- This specifies whether or not a button type will "pulse" when it has focus. This is done by varying the alpha channel of the button. Defaults to true. -->
+<!ELEMENT pulseonselect (#PCDATA)>
+
+<!-- Specifies the image file which should be displayed when the button has focus. -->
+<!ELEMENT texturefocus (#PCDATA)>
+
+<!-- Specifies the image file which should be displayed when the button does not have focus. -->
+<!ELEMENT texturenofocus (#PCDATA)>
+
+<!-- The label used on the button. It can be a link into strings.xml, or an actual text label. -->
+<!ELEMENT label (#PCDATA)>
+
+<!-- Font used for the button label. From the skin /720p/fonts.xml. -->
+<!ELEMENT font (#PCDATA)>
+
+<!-- Color used for displaying the button label. In AARRGGBB hex format or a name from the skin color themes /colors/defaults.xml. -->
+<!ELEMENT textcolor (#PCDATA)>
+
+<!-- Color used for the button label when the button has in focus. In AARRGGBB hex format or a name from the skin color themes /colors/defaults.xml. -->
+<!ELEMENT focusedcolor (#PCDATA)>
+
+<!-- Color used for the button label if the button is disabled. In AARRGGBB hex format or a name from the skin color themes /colors/defaults.xml. -->
+<!ELEMENT disabledcolor (#PCDATA)>
+
+<!-- Specifies the color of the drop shadow on the text. In AARRGGBB hex format or a name from the skin color themes /colors/defaults.xml. -->
+<!ELEMENT shadowcolor (#PCDATA)>
+
+<!-- The angle the text should be rendered at, in degrees. A value of 0 is horizontal. -->
+<!ELEMENT angle (#PCDATA)>
+
+<!-- Label horizontal alignment on the button. Defaults to left, can also be center or right. -->
+<!ELEMENT align (#PCDATA)>
+
+<!-- Label vertical alignment on the -->
+<!ELEMENT aligny (#PCDATA)>
+
+<!-- Amount to offset the label from the left (or right) edge of the button when using left or right alignment. -->
+<!ELEMENT textoffsetx (#PCDATA)>
+
+<!-- Amount to offset the label from the top edge of the button when using top alignment. -->
+<!ELEMENT textoffsety (#PCDATA)>
+
+<!-- Specifies the image file which will be displayed. It can be a texture file from the media folder or using $INFO also a GUI information. Note http links to textures are not supported currently. -->
+<!ELEMENT texture (#PCDATA)>
+
+<!-- Used to specify a region of the texture to be considered a border that should not be scaled when the texture is scaled to fit a control's dimensions. The portion in the border region will remain unscaled. Particularly useful to achieve rounded corners that do not change size when a control is resized. Note that zoom animations and GUI rescaling will still affect the border region - it is just the scaling of the texture to the control size which is unaffected. Using border="5" will give a 5 pixel border all around the texture. You can specify each of the border amounts on each edge individually using border="left,right,top,bottom". -->
+<!ATTLIST texture border CDATA #IMPLIED>
+
+<!-- Specifies that the texture should be flipped in the horizontal direction. Useful for reflections. -->
+<!ATTLIST texture flipx CDATA #IMPLIED> 
+
+<!-- Specifies that the texture should be flipped in the vetical direction. Useful for reflections. -->
+<!ATTLIST texture flipy CDATA #IMPLIED>
+
+<!-- Specifies that the texture should be aligned in the horizontal direction. Valid values are "left" "right "center". -->
+<!ATTLIST texture align (left|right|center) "left">
+
+<!-- Specifies that the texture should be aligned in the Vertical direction. Valid values are "top" "bottom" "center". -->
+<!ATTLIST texture aligny (top|bottom|center) "top">
+
+<!-- Specifies a diffuse texture which is "modulated" or multiplied with the texture in order to give specific effects, such as making the image gain transparency, or tint it in various ways. As it's applied per-pixel, many effects are possible, the most popular being by a transparent reflection which slowly gets more and more opaque. This is achieved using a WHITE image where the transparency increases as you move down the texture. -->
+<!ATTLIST texture diffuse CDATA #IMPLIED>
+
+
+<!--
+============= Animation =============
+-->
+<!ELEMENT animation (#PCDATA|effect)>
+<!ELEMENT effect EMPTY>
+
+<!-- Specifies the effect to use. Currently "fade", "slide", "rotate", and "zoom" are supported. -->
+<!ATTLIST animation effect (fade|slide|rotate|zoom) "fade">
+
+<!--
+time  Specifies the length of time that the animation will run, in milliseconds.
+delay The time to delay the transistion before starting it, in milliseconds.
+start The start state of the control for the animation, differs for each effect. For fades, this is the opaqueness as a percentage (ie start="100" is fully opaque, start="0" is fully transparent. For slides, this is the relative coordinate offset to start the control at (ie start="50,60" will start the control off at 50 pixels to the right, and 60 pixels below it's normal viewing position. For rotates, this is the starting degree offset from the horizontal. (ie start="30" will start the control off on an angle of 30 degrees from the horizontal). For zooms, this is the starting size as a percentage. (ie start="50,60" will start the control at 50% of it's horizontal size and 60% of it's vertical size).
+end The end state of the control for this transistion. Similar to the start state, except that the end state is always kept after the animation is finished, and until the control changes its state.
+acceleration  Amount to accelerate or decelerate during a "slide", "zoom" or "rotate" transistion. For deceleration, use a negative value. A value of -1 will cause the control to come to rest at its end coordinates. Defaults to 0. (Also see the tween attribute)
+center  Center of the rotation or zoom to perform with a "rotate" or "zoom" transistion. This is the coordinates about which the rotation or zoom will take place. eg center="30,50" will mean that all points will revolve around (or zoom from) the (30,50) pixel location. You can set center="auto" to have Boxee automatically zoom from the center of the control.
+condition The conditions under which this animation should be performed. Defaults to being always performed. See here for a list of valid conditionals.
+reversible  If "false" the animation is not reversed if it is interrupted when it is finished. For instance a Visible animation will normally be reversed (instead of running the Hidden animation) if the control becomes hidden before the visible animation has finished. Setting reversible="false" prevents this behaviour (the Hidden animation will take its place). Defaults to true.
+loop  If "true" will make your fade animation loop. (jump back to the start after it reaches the end)
+pulse If "true" will make your fade animation pulse. (Bounce back from start to end to start to end ...)
+tween Tween is like an advanced acceleration attribute that can be applied to all animations. Instead of a steady acceleration or deceleration, you can specify curves that the animation should follow. Currently, the engine supports "elastic", "bounce", "circle", "back", "sine", "cubic", "quadratic" and, the default, "linear". See XBMC's excelent example of Tweeners for more information.
+easing  Easing basically defines the direction of the tween and can be one of "out", "inout" and "in". The default value is "out". See XBMC's Tweeners documentation for more information.
+-->
+<!-- See http://developer.boxee.tv/UI_Animations -->
+<!ATTLIST animation type (WindowOpen|WindowClose|Visible|Hidden|Focus|Unfocus|VisibleChange|Conditional) "WindowOpen">
+<!ATTLIST animation time CDATA #IMPLIED>
+<!ATTLIST animation delay CDATA #IMPLIED>
+<!ATTLIST animation start CDATA #IMPLIED>
+<!ATTLIST animation end CDATA #IMPLIED>
+<!ATTLIST animation acceleration CDATA #IMPLIED>
+<!ATTLIST animation center CDATA #IMPLIED>
+<!ATTLIST animation condition CDATA #IMPLIED>
+<!ATTLIST animation reversible (true|false) "false">
+<!ATTLIST animation loop (true|false) "false">
+<!ATTLIST animation pulse (true|false) "false">
+<!ATTLIST animation tween (elastic|bounce|circle|back|sine|cubic|quadratic|linear) "linear">
+<!ATTLIST animation easing (out|inout|in) "out">
+
+<!-- Specifies the effect to use. Currently "fade", "slide", "rotate", and "zoom" are supported. -->
+<!ATTLIST effect type (fade|slide|rotate|zoom) "fade">
+<!ATTLIST effect time CDATA #IMPLIED>
+<!ATTLIST effect delay CDATA #IMPLIED>
+<!ATTLIST effect start CDATA #IMPLIED>
+<!ATTLIST effect end CDATA #IMPLIED>
+<!ATTLIST effect acceleration CDATA #IMPLIED>
+<!ATTLIST effect center CDATA #IMPLIED>
+<!ATTLIST effect condition CDATA #IMPLIED>
+<!ATTLIST effect reversible (true|false) "false">
+<!ATTLIST effect loop (true|false) "false">
+<!ATTLIST effect pulse (true|false) "false">
+<!ATTLIST effect tween (elastic|bounce|circle|back|sine|cubic|quadratic|linear) "linear">
+<!ATTLIST effect easing (out|inout|in) "out">
+
+]>
