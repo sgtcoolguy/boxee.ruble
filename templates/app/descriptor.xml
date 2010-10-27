@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<app>
+  <id>hello-world</id>
+  <name>Hello World</name>
+  <version>1.0</version>
+  <description>A simple hello world Boxee app.</description>
+  <thumb>http://dir.boxee.tv/apps/pandora/thumb.png</thumb>
+  <media>pictures</media>
+  <copyright>Christopher Williams</copyright>
+  <email>chris.a.williams@gmail.com</email>
+  <type>skin</type>
+  <platform>all</platform>
+  <minversion>0.9.11</minversion>
+  <startWindow>14000</startWindow>
+  <test-app>true</test-app>
+</app>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<window type="window" id="14000">
+  <controls>
+    <control type="label">
+      <label>Hello World!</label>
+      <width>348</width>
+      <height>60</height>
+      <font>font48</font>
+    </control>
+  </controls>
+</window>
