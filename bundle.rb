@@ -4,7 +4,7 @@ bundle 'Boxee' do |bundle|
   bundle.author = 'Christopher Williams'
   bundle.copyright = '(c) Copyright 2010 Christopher Williams. Distributed under MIT license.'
   bundle.description = 'This is a bundle to help create boxee apps'
-  bundle.repository = 'git@github.com:cwilliams/boxee.ruble.git'
+  bundle.repository = 'git://github.com/sgtcoolguy/boxee.ruble.git'
 
   bundle.project_template :web,
                           "Basic Boxee Template",
