@@ -6,11 +6,6 @@ bundle 'Boxee' do |bundle|
   bundle.description = 'This is a bundle to help create boxee apps'
   bundle.repository = 'git://github.com/sgtcoolguy/boxee.ruble.git'
 
-  bundle.project_template :web,
-                          "Basic Boxee Template",
-                          "templates/boxee_template.zip",
-                          "A basic template which includes the default boxee app structure"
-
   bundle.menu 'Boxee' do |m|
     m.command 'Open Boxee'
     m.command 'Copy App to Boxee'
