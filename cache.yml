@@ -1,0 +1,155 @@
+!!com.aptana.scripting.model.BundleElement
+author: Christopher Williams
+children:
+- !!com.aptana.scripting.model.MenuElement
+  children:
+  - children: &id001 []
+    commandName: Open Boxee
+    customProperties: null
+    displayName: Open Boxee
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Copy App to Boxee
+    customProperties: null
+    displayName: Copy App to Boxee
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Open Log
+    customProperties: null
+    displayName: Open Log
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Create Debug Log
+    customProperties: null
+    displayName: Create Debug Log
+    path: bundle.rb
+    scope: null
+  commandName: Boxee
+  customProperties: null
+  displayName: Boxee
+  path: bundle.rb
+  scope: null
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Copy App to Boxee
+  inputPath: null
+  keyBindingMap:
+    !!com.aptana.scripting.model.Platform 'ALL': [CONTROL+SHIFT+B]
+  outputPath: null
+  outputType: discard
+  path: commands/copy_app.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Enable Debug logging
+  inputPath: null
+  keyBindingMap:
+    !!com.aptana.scripting.model.Platform 'ALL': [CONTROL+SHIFT+B]
+  outputPath: null
+  outputType: discard
+  path: commands/create_debug_log.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Open Boxee
+  inputPath: null
+  keyBindingMap:
+    !!com.aptana.scripting.model.Platform 'ALL': [CONTROL+SHIFT+B]
+  outputPath: null
+  outputType: discard
+  path: commands/open_boxee.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Open Log
+  inputPath: null
+  keyBindingMap:
+    !!com.aptana.scripting.model.Platform 'ALL': [CONTROL+SHIFT+B]
+  outputPath: null
+  outputType: discard
+  path: commands/open_log.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  customProperties:
+    prefix_values: [app]
+  displayName: app
+  expansion: "<app>\n  <id>${TM_PROJECT_NAME}</id>\n  <name>THRU YOU</name>\n  <version>1.0</version>\n\
+    \  <description>THRU YOU | Kutiman mixes YouTube</description>\n  <thumb>http://dir.boxee.tv/apps/${TM_PROJECT_NAME}/thumb.png</thumb>\n\
+    \  <repository>http://dir.boxee.tv/apps</repository>\n  <media>${1:video/pictures/music}</media>\n\
+    \  <copyright>${TM_FULL_NAME}</copyright>\n  <email>${2:support@boxee.tv}</email>\n\
+    \  <type>${3:skin/rss/plugin}</type>\n  <startWindow>14000</startWindow>\n  <platform>${4:all/win/mac/atv/linux}</platform>\n\
+    \  <minversion>0.9.12</minversion>\n </app>"
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets/snippets.rb
+  runType: current_thread
+  scope: text.xml
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  customProperties:
+    prefix_values: [wi]
+  displayName: window
+  expansion: "<window type=\"window\" id=\"${1:14000}\">\n  <defaultcontrol always=\"\
+    true\">120</defaultcontrol>\n  <allowoverlay>${2:no/yes}</allowoverlay>\n  <onload>$3</onload>\n\
+    \  <onunload>$4</onunload>\n  <controls>\n    co${0}\n  </controls>\n</window>"
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets/snippets.rb
+  runType: current_thread
+  scope: text.xml
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  customProperties:
+    prefix_values: [co]
+  displayName: label control
+  expansion: "<control type=\"label\" id=\"${1:110}\">\n   <posx>280</posx>\n   <posy>100</posy>\n\
+    \   <width>250</width>\n   <height>40</height>\n   <label>Some text goes here</label>\n\
+    </control>"
+  inputPath: null
+  keyBindingMap: null
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets/snippets.rb
+  runType: current_thread
+  scope: text.xml
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.ProjectTemplateElement {customProperties: null, description: A basic template which includes the default boxee app structure,
+  displayName: Basic Boxee Template, location: templates/boxee_template.zip, path: templates/project_templates.rb,
+  scope: null, type: WEB}
+copyright: (c) Copyright 2010 Christopher Williams. Distributed under MIT license.
+customProperties: null
+decreaseIndentMarkers: &id002 {}
+description: This is a bundle to help create boxee apps
+displayName: Boxee
+fileTypeRegistry: *id002
+fileTypes: *id001
+foldingStartMarkers: *id002
+foldingStopMarkers: *id002
+increaseIndentMarkers: *id002
+license: null
+licenseUrl: null
+path: bundle.rb
+repository: git://github.com/sgtcoolguy/boxee.ruble.git
+visible: true
