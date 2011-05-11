@@ -1,6 +1,6 @@
 require 'ruble'
 
-command 'Enable Debug logging' do |cmd|
+command 'Create Debug Log' do |cmd|
   cmd.input = :none
   cmd.output = :discard
   cmd.key_binding = 'CONTROL+SHIFT+B'
